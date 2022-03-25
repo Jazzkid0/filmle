@@ -30,7 +30,9 @@ class App extends Component {
       <div className="tc">
         <div className='pb4'>
           {/* Header */}
+          <h2 className='blue'>Coming soon! Feel free to check out the site layout though</h2>
           <h1>Filmle</h1>
+
           <p>Try to guess the film title by its cast.</p>
           <p>You'll get access to more cast members after every guess.</p>
           <p>Your guesses will be hotter or colder based on the release year.</p>
