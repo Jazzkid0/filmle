@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/jazzkid0.github.io/filmle/static/css/main.e72d5d51.css",
-    "main.js": "/jazzkid0.github.io/filmle/static/js/main.129e5d4f.js",
-    "static/js/787.7d031d8a.chunk.js": "/jazzkid0.github.io/filmle/static/js/787.7d031d8a.chunk.js",
-    "index.html": "/jazzkid0.github.io/filmle/index.html",
-    "main.e72d5d51.css.map": "/jazzkid0.github.io/filmle/static/css/main.e72d5d51.css.map",
-    "main.129e5d4f.js.map": "/jazzkid0.github.io/filmle/static/js/main.129e5d4f.js.map",
-    "787.7d031d8a.chunk.js.map": "/jazzkid0.github.io/filmle/static/js/787.7d031d8a.chunk.js.map"
+    "main.css": "/filmle/static/css/main.e72d5d51.css",
+    "main.js": "/filmle/static/js/main.bbf9eb79.js",
+    "static/js/787.7d031d8a.chunk.js": "/filmle/static/js/787.7d031d8a.chunk.js",
+    "index.html": "/filmle/index.html",
+    "main.e72d5d51.css.map": "/filmle/static/css/main.e72d5d51.css.map",
+    "main.bbf9eb79.js.map": "/filmle/static/js/main.bbf9eb79.js.map",
+    "787.7d031d8a.chunk.js.map": "/filmle/static/js/787.7d031d8a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e72d5d51.css",
-    "static/js/main.129e5d4f.js"
+    "static/js/main.bbf9eb79.js"
   ]
 }
