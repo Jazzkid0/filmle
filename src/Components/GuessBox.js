@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const GuessBox= ({ guessChange }) => {
+const GuessBox= ({ guessChange, tries }) => {
   return (
     <div>
       <input 
@@ -9,6 +9,7 @@ const GuessBox= ({ guessChange }) => {
       className='pa3 ba b--red bg-transparent white' 
       placeholder='Make a guess' 
       onChange={guessChange} />
+      {tries > 0 && <p>Tries: {tries}</p>}
     </div>
   )
 }

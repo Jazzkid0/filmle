@@ -12,12 +12,32 @@ class App extends Component {
       answer: '',
       guessField: '',
       guesses: [],
-      cast: []
+      castList: [],
+      finished: false,
+      correct: false
     }
   }
 
   componentDidMount() {
-    fetch()
+    try {
+      fetch("https://api.themoviedb.org/3/movie/550?api_key=e1acd5a11dbd34b127dc1dc08a8be166")
+      .then(resp => resp.json())
+      .then(details => this.setState({ answer: details.title }))
+      .catch(err => console.log("Failed to grab title: ", err))
+    } catch (error) {
+      console.log("Failed to grab title: ", error);
+    }
+    
+    try {
+      fetch("https://api.themoviedb.org/3/movie/550/credits?api_key=e1acd5a11dbd34b127dc1dc08a8be166&language=en-US")
+      .then(resp => resp.json())
+      .then(data => this.setState({ castList: data.cast }))
+      .catch(err => console.log("Failed to grab cast: ", err))
+    } catch (error) {
+      console.log("Failed to grab cast: ", error);
+    }
+
+    
   }
 
   onGuessChange = (typeEvent) => {
@@ -25,6 +45,9 @@ class App extends Component {
   }
 
   render() {
+    const { answer, castList, finished, correct, guesses } = this.state;
+    const tries = guesses.length;
+    const filteredCastList = castList.slice(0, tries+1)
 
     return (
       <div className="tc">
@@ -35,24 +58,25 @@ class App extends Component {
 
           <p>Try to guess the film title by its cast.</p>
           <p>You'll get access to more cast members after every guess.</p>
-          <p>Your guesses will be hotter or colder based on the release year.</p>
         </div>
         <div className=''>
           {/* Show answer when finished */}
-          <Answer />
+          <Answer answer={answer} finished={finished} correct={correct}/>
         </div>
         <div className='pb3'>
           {/* Make guesses */}
-          <GuessBox guessChange={this.onGuessChange}/>
+          <GuessBox guessChange={this.onGuessChange} tries={tries}/>
         </div>
-        <div className='flex'>
-          <div className='pl6 w-50'>
+        <div className='flex justify-center pb6'>
+          <br className='pb6'/>
+          <div className='w-45 tr'>
             {/* Previous guesses */}
-            <Guesses />
+            <Guesses guesses={guesses}/>
           </div>
-          <div className='pr6 w-50'>
+          <div className='w-10'></div>
+          <div className='w-45 tl'>
             {/* Cast */}
-            <CastList />
+            <CastList castList={filteredCastList} />
           </div>
         </div>
         <div>
