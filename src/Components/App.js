@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   onGuessChange = (typeEvent) => {
-    this.setState({ guessField: typeEvent.target.value });
+    this.setState({ guesses: [...this.state.guesses, this.state.guessField] });
   }
 
   render() {
