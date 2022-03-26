@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Guess from './Guess';
 
-class Guesses extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Guesses</h2>
-      </div>
-    );
-  }
+const Guesses = ({ guesses }) => {
+  return (
+    <div>
+      <h2>Guesses</h2>
+      {guesses.map((guess, i) => {
+        return (
+          <Guess guess={guess} />
+        );
+      })}
+    </div>
+  );
 }
 
 export default Guesses;

@@ -7,7 +7,7 @@ const CastList = ({ castList }) => {
       <h2>Cast List</h2>
       {castList.map((castMember, i) => {
         return (
-          <CastMember key={i} name={castList[i].name} />
+          <CastMember key={i} number={i} name={castList[i].name} />
         );
       })}
     </div>
