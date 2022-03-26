@@ -74,7 +74,6 @@ class App extends Component {
           
         </div>
         <div className='flex justify-center pb6'>
-          <br className='pb6'/>
           <div className='w-45 tr'>
             {/* Previous guesses */}
             <Guesses guesses={guesses}/>
