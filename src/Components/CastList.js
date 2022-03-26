@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import CastMember from './CastMember';
 
-class CastList extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Cast List</h2>
-        <p>{this.props.cast}</p>
-      </div>
-    );
-  }
+const CastList = ({ castList }) => {
+  return (
+    <div>
+      <h2>Cast List</h2>
+      {castList.map((castMember, i) => {
+        return (
+          <CastMember key={i} number={i} name={castList[i].name} />
+        );
+      })}
+    </div>
+  );
 }
 
 export default CastList;
