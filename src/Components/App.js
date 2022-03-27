@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  // On page load, get a random movie from the API within the top 20000 (1000 pages of 20 each)
+  // On page load, get a random movie from the API within the top 10000 (500 pages of 20 each)
   componentDidMount() {
 
     const randomPage = Math.floor(Math.random() * 500) + 1;
@@ -46,7 +46,12 @@ class App extends Component {
 
   render() {
     const { answer, guesses, movieID } = this.state;
-    const tries = guesses.length;
+    let tries;
+    if(guesses.length < 8) {
+      tries = guesses.length;
+    } else {
+      tries = 8;
+    }
 
     if(movieID === '') {
       return(<div>Loading...</div>) 

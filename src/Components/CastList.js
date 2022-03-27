@@ -23,7 +23,13 @@ class CastList extends Component {
 
   render() {
     const { castList } = this.state;
-    const filteredCastList = castList.slice(0, this.props.tries + 1)
+    let filteredCastList;
+    if(this.props.tries < 8) {
+      filteredCastList = castList.slice(0, this.props.tries + 1)
+    } else {
+      filteredCastList = castList.slice(0, 8)
+    }
+    
 
     return (
       <div>
