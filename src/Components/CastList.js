@@ -1,6 +1,8 @@
 import React from 'react';
 import CastMember from './CastMember';
 
+const api_key = process.env.REACT_APP_API_KEY
+
 const CastList = ({ castList }) => {
   return (
     <div>
