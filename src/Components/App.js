@@ -15,9 +15,7 @@ class App extends Component {
       answer: '',
       guessField: '',
       guesses: [],
-      castList: [],
       finished: false,
-      movieList: [],
       movieID: '',
       correct: false
     }
@@ -41,19 +39,6 @@ class App extends Component {
     } catch (error) {
       console.log(error)
     }
-
-    console.log(this.movieID)
-
-
-    try {
-      fetch(`https://api.themoviedb.org/3/movie/465/credits?api_key=${api_key}&language=en-US`)
-      .then(resp => resp.json())
-      .then(data => this.setState({ castList: data.cast }))
-      .catch(err => console.log("Failed to grab cast: ", err))
-    } catch (error) {
-      console.log("Failed to grab cast: ", error);
-    }
-    
   }
 
   onGuessChange = (guess) => {
@@ -63,50 +48,53 @@ class App extends Component {
   }
 
   render() {
-    const { answer, castList, finished, correct, guesses, movieID } = this.state;
+    const { answer, finished, correct, guesses, movieID } = this.state;
     const tries = guesses.length;
-    const filteredCastList = castList.slice(0, tries+1)
 
-    return (
-      <div className="tc">
-        <div className='pb4'>
-          {/* Header */}
-          <h2 className='blue'>Coming soon! Feel free to check out the site layout though</h2>
-          <h1>Filmle</h1>
+    if(movieID === '') {
+      return(<div>Loading...</div>) 
+    } else {
+      return (
+        <div className="tc">
+          <div className='pb4'>
+            {/* Header */}
+            <h2 className='blue'>Coming soon! Feel free to check out the site layout though</h2>
+            <h1>Filmle</h1>
 
-          <p>Try to guess the film title by its cast.</p>
-          <p>You'll get access to more cast members after every guess.</p>
-        </div>
-        <div className=''>
-          {/* Show answer when finished */}
-          <Answer answer={answer} finished={finished} correct={correct}/>
-          <h2>{answer}, ID {movieID}</h2>
-        </div>
-        <div className='pb3'>
-          <ErrorBoundary>
-            {/* Make guesses */}
-            <GuessBox guessChange={this.onGuessChange} tries={tries}/>
-          </ErrorBoundary>
-          
-        </div>
-        <div className='flex justify-center pb6'>
-          <div className='w-45 tr'>
-            {/* Previous guesses */}
-            <Guesses guesses={guesses}/>
+            <p>Try to guess the film title by its cast.</p>
+            <p>You'll get access to more cast members after every guess.</p>
           </div>
-          <div className='w-10'></div>
-          <div className='w-45 tl'>
-            {/* Cast */}
-            <CastList castList={filteredCastList} />
+          <div className=''>
+            {/* Show answer when finished */}
+            <Answer answer={answer} finished={finished} correct={correct}/>
+            <h2>{answer}, ID {movieID}</h2>
+          </div>
+          <div className='pb3'>
+            <ErrorBoundary>
+              {/* Make guesses */}
+              <GuessBox guessChange={this.onGuessChange} tries={tries}/>
+            </ErrorBoundary>
+            
+          </div>
+          <div className='flex justify-center pb6'>
+            <div className='w-45 tr'>
+              {/* Previous guesses */}
+              <Guesses guesses={guesses}/>
+            </div>
+            <div className='w-10'></div>
+            <div className='w-45 tl'>
+              {/* Cast */}
+              <CastList tries={tries} movieID={movieID} />
+            </div>
+          </div>
+          <div>
+            {/* Footer */}
+            <p>All of the data used on this site is from <a href="https://www.themoviedb.org/">TMDB</a></p>
+            <p>They are a community driven movie database, with a free API</p>
           </div>
         </div>
-        <div>
-          {/* Footer */}
-          <p>All of the data used on this site is from <a href="https://www.themoviedb.org/">TMDB</a></p>
-          <p>They are a community driven movie database, with a free API</p>
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
