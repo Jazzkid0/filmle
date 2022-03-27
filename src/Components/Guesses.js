@@ -7,7 +7,7 @@ const Guesses = ({ guesses }) => {
       <h2>Guesses</h2>
       {guesses.map((guess, i) => {
         return (
-          <Guess guess={guess} />
+          <Guess key={i} guess={guess} />
         );
       })}
     </div>

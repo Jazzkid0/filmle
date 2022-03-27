@@ -4,6 +4,7 @@ import Answer from './Answer';
 import GuessBox from './GuessBox';
 import Guesses from './Guesses';
 import CastList from './CastList';
+import ErrorBoundary from './ErrorBoundary';
 
 class App extends Component {
   constructor() {
@@ -40,8 +41,10 @@ class App extends Component {
     
   }
 
-  onGuessChange = (typeEvent) => {
-    this.setState({ guesses: [...this.state.guesses, this.state.guessField] });
+  onSubmitGuess = (guess) => {
+    if(guess.key === "Enter") {
+      this.setState({ guesses: [...this.state.guesses, guess.target.value] });
+    }
   }
 
   render() {
@@ -64,11 +67,13 @@ class App extends Component {
           <Answer answer={answer} finished={finished} correct={correct}/>
         </div>
         <div className='pb3'>
-          {/* Make guesses */}
-          <GuessBox guessChange={this.onGuessChange} tries={tries}/>
+          <ErrorBoundary>
+            {/* Make guesses */}
+            <GuessBox guessChange={this.onSubmitGuess} tries={tries}/>
+          </ErrorBoundary>
+          
         </div>
         <div className='flex justify-center pb6'>
-          <br className='pb6'/>
           <div className='w-45 tr'>
             {/* Previous guesses */}
             <Guesses guesses={guesses}/>
