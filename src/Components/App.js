@@ -13,11 +13,8 @@ class App extends Component {
     super()
     this.state = {
       answer: '',
-      guessField: '',
       guesses: [],
-      finished: false,
       movieID: '',
-      correct: false
     }
   }
 
@@ -48,7 +45,7 @@ class App extends Component {
   }
 
   render() {
-    const { answer, finished, correct, guesses, movieID } = this.state;
+    const { answer, guesses, movieID } = this.state;
     const tries = guesses.length;
 
     if(movieID === '') {
@@ -66,8 +63,7 @@ class App extends Component {
           </div>
           <div className=''>
             {/* Show answer when finished */}
-            <Answer answer={answer} finished={finished} correct={correct}/>
-            <h2>{answer}, ID {movieID}</h2>
+            <Answer answer={answer} guesses={guesses}/>
           </div>
           <div className='pb3'>
             <ErrorBoundary>
