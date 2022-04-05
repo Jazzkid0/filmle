@@ -65,6 +65,7 @@ class App extends Component {
 
             <p>Try to guess the film title by its cast.</p>
             <p>You'll get access to more cast members after every guess.</p>
+            <p>You can refresh to start a new game. Good luck!</p>
           </div>
           <div className=''>
             {/* Show answer when finished */}
