@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from 'react-select';
 
 const GuessBox= ({ guessChange, tries }) => {
   return (
@@ -10,7 +9,7 @@ const GuessBox= ({ guessChange, tries }) => {
       placeholder='Make a guess' 
       onKeyDown={guessChange}
       />
-      {tries > 0 && <p>Tries: {tries}</p>}
+      {tries > 0 && <p>Tries: {tries}/8</p>}
     </div>
   )
 }

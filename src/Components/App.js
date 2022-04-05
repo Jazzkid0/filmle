@@ -18,10 +18,10 @@ class App extends Component {
     }
   }
 
-  // On page load, get a random movie from the API within the top 10000 (500 pages of 20 each)
+  // On page load, get a random movie from the API within the top 1000 (50 pages of 20 each)
   componentDidMount() {
 
-    const randomPage = Math.floor(Math.random() * 500) + 1;
+    const randomPage = Math.floor(Math.random() * 50) + 1;
     const randomMovie = Math.floor(Math.random() * 20);
 
     const pageUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}`;
@@ -60,7 +60,7 @@ class App extends Component {
         <div className="tc">
           <div className='pb4'>
             {/* Header */}
-            <h2 className='blue'>Coming soon! Feel free to check out the site layout though</h2>
+            {/* <h2 className='blue'>Coming soon! Feel free to check out the site layout though</h2> */}
             <h1>Filmle</h1>
 
             <p>Try to guess the film title by its cast.</p>
@@ -68,7 +68,8 @@ class App extends Component {
           </div>
           <div className=''>
             {/* Show answer when finished */}
-            <Answer answer={answer} guesses={guesses}/>
+            <Answer answer={answer} guesses={guesses} tries={tries}/>
+            {/* <p>Answer: {answer}</p> */}
           </div>
           <div className='pb3'>
             <ErrorBoundary>
